@@ -1,9 +1,18 @@
-#ifndef COMMON_HPP
-#define COMMON_HPP
+#ifndef HYPERGON_H
+#define HYPERGON_H
 
+#include <iostream>
 namespace core
 {
-  void hello();
+  /**
+   * @brief Initialize the engine.
+   */
+  void init();
+
+  /**
+   * @brief Start the engine.
+   */
+  void start();
 }
 
-#endif // COMMON_HPP
+#endif // HYPERGON_H

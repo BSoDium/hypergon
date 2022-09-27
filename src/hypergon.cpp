@@ -1,9 +1,18 @@
 #include <iostream>
 
+#include "engine.hpp"
+
+Engine *engine;
+
 namespace core
 {
-  void hello()
+  void init()
   {
-    std::cout << "Hello, world!" << std::endl;
+    engine = new Engine();
+  }
+
+  void start()
+  {
+    engine->start();
   }
 }

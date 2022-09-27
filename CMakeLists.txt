@@ -18,10 +18,12 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_library(${PROJECT_NAME} STATIC)
 
-target_sources(${PROJECT_NAME}
-    PRIVATE
-        src/${entrypoint}.cpp
+file(GLOB_RECURSE sources CONFIGURE_DEPENDS
+    "${PROJECT_SOURCE_DIR}/src/*.cpp"
+    "${PROJECT_SOURCE_DIR}/src/*.h"
 )
+
+target_sources(${PROJECT_NAME} PRIVATE ${sources})
 
 target_include_directories(${PROJECT_NAME}
     PRIVATE
