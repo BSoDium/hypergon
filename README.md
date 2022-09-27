@@ -9,15 +9,13 @@ Setup the dependencies mentionned below, *ie* `OpenGL`, `GLFW`, `Glm`, and `Glu`
 Build the project with `cmake` and `make`:
 
 ```bash
-cd terrain_interpolation
+cd hypergon
 mkdir build
 cd build
 cmake ..
 make
 ```
 
-Run the program:
+## Usage
 
-```bash
-./src/main
-```
+*To be documented.*
