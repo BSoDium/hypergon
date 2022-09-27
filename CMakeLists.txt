@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.15)
 
-set(namespace "hypergon")
+set(entrypoint "hypergon")
+set(namespace "core")
 project(hypergon 
     VERSION 0.1.0 
     DESCRIPTION "Hypergon 4D rendering engine"
@@ -19,7 +20,7 @@ add_library(${PROJECT_NAME} STATIC)
 
 target_sources(${PROJECT_NAME}
     PRIVATE
-        src/common.cpp
+        src/${entrypoint}.cpp
 )
 
 target_include_directories(${PROJECT_NAME}
@@ -36,7 +37,7 @@ target_include_directories(${PROJECT_NAME}
 
 # install public headers
 set(public_headers
-    include/common.h
+    include/${entrypoint}.h
 )
 
 # not for MSVC

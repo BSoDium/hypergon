@@ -1,6 +1,6 @@
 #include <iostream>
 
-namespace hypergon
+namespace core
 {
   void hello()
   {

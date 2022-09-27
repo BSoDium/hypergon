@@ -1,7 +1,7 @@
 #ifndef COMMON_HPP
 #define COMMON_HPP
 
-namespace hypergon
+namespace core
 {
   void hello();
 }
