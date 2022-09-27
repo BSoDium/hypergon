@@ -13,14 +13,14 @@ else()
     message(STATUS "This project is a top-level one")
 endif()
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_library(${PROJECT_NAME} STATIC)
 
 file(GLOB_RECURSE sources CONFIGURE_DEPENDS
     "${PROJECT_SOURCE_DIR}/src/*.cpp"
-    "${PROJECT_SOURCE_DIR}/src/*.h"
+    "${PROJECT_SOURCE_DIR}/src/*.hpp"
 )
 
 target_sources(${PROJECT_NAME} PRIVATE ${sources})
@@ -39,7 +39,7 @@ target_include_directories(${PROJECT_NAME}
 
 # install public headers
 set(public_headers
-    include/${entrypoint}.h
+    include/${entrypoint}.hpp
 )
 
 # not for MSVC

@@ -1,5 +1,5 @@
-#ifndef HYPERGON_H
-#define HYPERGON_H
+#ifndef HYPERGON_HPP
+#define HYPERGON_HPP
 
 #include <iostream>
 namespace core
@@ -15,4 +15,4 @@ namespace core
   void start();
 }
 
-#endif // HYPERGON_H
+#endif // HYPERGON_HPP

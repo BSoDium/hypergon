@@ -2,6 +2,7 @@
 #define ENGINE_HPP
 
 #include "scene/scene.hpp"
+#include "utils/logging/logger.hpp"
 
 class Engine
 {

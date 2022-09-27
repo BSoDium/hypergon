@@ -2,8 +2,9 @@
 #define SCENE_HPP
 
 #include "node.hpp"
+#include "utils/logging/logger.hpp"
 
-class Scene : public Node
+class Scene : public Node, public LogEmitter
 {
 private:
   /** Array of nodes in the scene. */
