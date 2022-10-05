@@ -23,6 +23,11 @@ file(GLOB_RECURSE sources CONFIGURE_DEPENDS
     "${PROJECT_SOURCE_DIR}/src/*.hpp"
 )
 
+find_package(OpenGL REQUIRED)
+find_package(glfw3 REQUIRED)
+find_package(GLEW REQUIRED)
+find_package(glm REQUIRED)
+
 target_sources(${PROJECT_NAME} PRIVATE ${sources})
 
 target_include_directories(${PROJECT_NAME}
@@ -36,6 +41,14 @@ target_include_directories(${PROJECT_NAME}
         $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
 )
 
+target_link_libraries(${PROJECT_NAME} 
+    PRIVATE
+        OpenGL::GL
+        OpenGL::GLU
+        GLEW::GLEW
+        glm::glm
+        glfw
+)
 
 # install public headers
 set(public_headers
