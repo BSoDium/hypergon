@@ -2,18 +2,14 @@
 
 #include "engine.hpp"
 
-Engine::Engine()
-{
-  Logger::info("Initializing engine");
-  this->scene = new Scene();
-}
-
 void Engine::start()
 {
   Logger::debug("Starting engine");
-  this->viewport = new Viewport(
-      Config::get("viewport.width").asInt(),
-      Config::get("viewport.height").asInt());
+
+  // Initialize all the systems
+  this->scene = new Scene();
+  this->viewport = new Viewport();
+  this->manager = new Manager();
 }
 
 void Engine::stop()

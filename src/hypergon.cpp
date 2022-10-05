@@ -2,17 +2,10 @@
 
 #include "engine.hpp"
 
-Engine *engine;
-
 namespace core
 {
-  void init()
-  {
-    engine = new Engine();
-  }
-
   void start()
   {
-    engine->start();
+    Engine::getInstance()->start();
   }
 }

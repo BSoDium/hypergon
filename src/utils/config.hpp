@@ -4,22 +4,23 @@
 #include <iostream>
 #include <map>
 
-enum ValueType {
-  STRING,
-  INT,
-  FLOAT,
-  BOOL
-};
-
-struct ConfigValue {
+struct ConfigValue
+{
   std::string s;
-  int asInt() {
+  std::string asString()
+  {
+    return s;
+  }
+  int asInt()
+  {
     return std::stoi(s);
   }
-  float asFloat() {
+  float asFloat()
+  {
     return std::stof(s);
   }
-  bool asBool() {
+  bool asBool()
+  {
     return s == "true";
   }
 };
@@ -28,10 +29,12 @@ class Config
 {
 private:
   inline static std::map<std::string, ConfigValue> values = {
-    {"viewport.width", {"800"}},
-    {"viewport.height", {"600"}},
-    {"viewport.fullscreen", {"false"}},
-  };
+      {"viewport.width", {"800"}},
+      {"viewport.height", {"600"}},
+      {"viewport.title", {"Hypergon"}},
+      {"viewport.clearColor", {"#e5e5e5ff"}},
+      {"viewport.nearPlane", {"0.1"}},
+      {"viewport.farPlane", {"1000.0"}}};
 
 public:
   /**
@@ -49,7 +52,6 @@ public:
   {
     values[key] = value;
   }
-
 };
 
 #endif // CONFIG_HPP

@@ -17,6 +17,9 @@
 #include <GL/glu.h>
 #include <GLFW/glfw3.h>
 
+#include "utils/color.hpp"
+#include "utils/config.hpp"
+
 class Viewport
 {
 private:
@@ -27,12 +30,14 @@ private:
   int width;
   /** The height. */
   int height;
+  /** The title. */
+  std::string title;
 
 public:
   /**
    * Create a new viewport instance.
    */
-  Viewport(int width, int height);
+  Viewport();
 
   /**
    * Destroy the viewport instance.

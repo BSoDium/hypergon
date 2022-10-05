@@ -8,6 +8,8 @@
 #include "rendering/viewport.hpp"
 #include "utils/config.hpp"
 #include "scene/scene.hpp"
+#include "utils/tasking/task.hpp"
+#include "utils/tasking/manager.hpp"
 
 /**
  * Main engine class.
@@ -19,12 +21,23 @@ private:
   Scene *scene;
   /** The viewport. */
   Viewport *viewport;
+  /** The task manager. */
+  Manager *manager;
+
+  /** Private constructor. */
+  Engine() {}
+  Engine(Engine const &other) = delete;
+  void operator=(Engine const &other) = delete;
 
 public:
+
   /**
-   * Create a new engine instance.
+   * Get the engine instance. Create it if it doesn't exist.
    */
-  Engine();
+  static Engine& getInstance() {
+    static Engine instance;
+    return instance;
+  }
 
   /**
    * Start the engine.
@@ -35,6 +48,21 @@ public:
    * Stop the engine.
    */
   void stop();
+
+  /**
+   * Get the scene.
+   */
+  Scene *getScene();
+
+  /**
+   * Get the viewport.
+   */
+  Viewport *getViewport();
+
+  /**
+   * Get the task manager.
+   */
+  Manager *getManager();
 };
 
 #endif

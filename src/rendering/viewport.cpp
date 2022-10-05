@@ -6,11 +6,11 @@
 #include <GL/glu.h>
 #include <GLFW/glfw3.h>
 
-
-Viewport::Viewport(int width, int height)
+Viewport::Viewport()
 {
-    this->width = width;
-    this->height = height;
+    this->width = Config::get("viewport.width").asInt();
+    this->height = Config::get("viewport.height").asInt();
+    this->title = Config::get("viewport.title").asString();
 
     if (!glfwInit())
     {
@@ -18,11 +18,30 @@ Viewport::Viewport(int width, int height)
         exit(1);
     }
 
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    Color *cc = new Color(Config::get("viewport.clearColor").asString());
 
-    this->window = glfwCreateWindow(width, height, "Hypergon", NULL, NULL);
+    float nearPlane = Config::get("viewport.nearPlane").asFloat();
+    float farPlane = Config::get("viewport.farPlane").asFloat();
+
+    glClearColor(cc->r, cc->g, cc->b, cc->a);
+    glViewport(0, 0, width, height);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluPerspective(65.0f, (float)width / (float)height, nearPlane, farPlane);
+
+    // Enable depth test
+    glEnable(GL_DEPTH_TEST);
+    // Gouraud shading
+    glEnable(GL_NORMALIZE);
+    // Enable color material blending
+    glEnable(GL_COLOR_MATERIAL);
+    // Enable smooth shading
+    glShadeModel(GL_SMOOTH);
+
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+
+    this->window = glfwCreateWindow(width, height, Config::get("viewport.title").asString().c_str(), NULL, NULL);
     if (!this->window)
     {
         std::cout << "Failed to create GLFW window" << std::endl;
@@ -31,6 +50,24 @@ Viewport::Viewport(int width, int height)
     }
 
     glfwMakeContextCurrent(this->window);
+}
 
-    glViewport(0, 0, width, height);
+Viewport::~Viewport()
+{
+    glfwTerminate();
+}
+
+int Viewport::getWidth()
+{
+    return this->width;
+}
+
+int Viewport::getHeight()
+{
+    return this->height;
+}
+
+GLFWwindow *Viewport::getWindow()
+{
+    return this->window;
 }
