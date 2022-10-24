@@ -1,13 +1,6 @@
 # Hypergon 4D rendering engine
 
-<div style="display: flex; flex-direction: row; column-gap: 10px">
-  <img src="public/hypergon_icon.png" alt="Logo" height="100" align="left">
-
-  <div>
-    A proof of concept for a 4D rendering engine built with OpenGL, in C++.
-  </div>
-</div>
-
+A proof of concept for a 4D rendering engine built with OpenGL, in C++.
 
 ## Installation
 
